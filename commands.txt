@@ -5,7 +5,7 @@ sequlize api creating commands from begining ..
 3.npx sequelize-cli init   // creates model migration config folder 
 
 
-model migration create 
+model migration create ..
 
 4.npx sequelize-cli model:generate --name products --attributes title:string,price:string,quantity:string,unitAmount:string,unit:string,rating:string  //creating model and migration file
 5.npx sequelize-cli db:migrate  //to migrate migration.
