@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // simple route
 app.get("/", (req, res) => {
-    res.json({ message: "Welcome to E-commerec application." });
+    res.json({ message: "Welcome e-commerec application." });
 });
 
 // set port, listen for requests
