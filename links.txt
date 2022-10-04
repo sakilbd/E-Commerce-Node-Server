@@ -1,0 +1,7 @@
+https://sequelize.org/docs/v6/other-topics/migrations/
+
+https://www.bezkoder.com/node-js-express-sequelize-mysql/
+
+
+//mysql authentication 
+https://www.tutsmake.com/node-js-express-mysql-user-authentication-rest-api-example/

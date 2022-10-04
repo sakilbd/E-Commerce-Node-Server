@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
-
+require("./app/routes/product.routes")(app);
 var corsOptions = {
     origin: "127.0.0.1"
 };
@@ -14,6 +14,7 @@ app.use(express.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
+
 
 // simple route
 app.get("/", (req, res) => {

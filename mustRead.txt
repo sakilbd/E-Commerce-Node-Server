@@ -1,0 +1,11 @@
+1.Error : No 'Access-Control-Allow-Origin' header is present on the requested resource.
+
+Need to use chrome extention "cross origin bypass"  to instant solve may be solved by server up.
+
+2.To see updated change on nodejs express server without restarting server on developemnt nodemon should be used 
+
+commands:
+npm i nodemon -g 
+npm nodemon server.js
+
+and done 

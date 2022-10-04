@@ -1,0 +1,15 @@
+sequlize api creating commands from begining ..
+
+1.npm install --save-dev sequelize-cli
+2.npm i sequelize --save 
+3.npx sequelize-cli init   // creates model migration config folder 
+
+
+model migration create 
+
+4.npx sequelize-cli model:generate --name products --attributes title:string,price:string,quantity:string,unitAmount:string,unit:string,rating:string  //creating model and migration file
+5.npx sequelize-cli db:migrate  //to migrate migration.
+6.npx sequelize-cli db:migrate:undo  // to undo all migration 
+7.npx sequelize-cli db:migrate:undo:all --to XXXXXXXXXXXXXX-create-posts.js   //to undo specific migration
+
+
