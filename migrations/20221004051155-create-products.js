@@ -9,6 +9,9 @@ module.exports = {
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
+            catagory_id: {
+                type: Sequelize.STRING
+            },
             title: {
                 type: Sequelize.STRING
             },
@@ -21,7 +24,7 @@ module.exports = {
             quantity: {
                 type: Sequelize.STRING
             },
-            unitAmount: {
+            unit_amount: {
                 type: Sequelize.STRING
             },
             unit: {

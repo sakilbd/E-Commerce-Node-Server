@@ -13,3 +13,6 @@ model migration create ..
 7.npx sequelize-cli db:migrate:undo:all --to XXXXXXXXXXXXXX-create-posts.js   //to undo specific migration
 
 
+8.form data insert (need to have body-parser package installed and included in routes file to read form data )
+
+

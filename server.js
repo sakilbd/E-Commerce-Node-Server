@@ -1,19 +1,24 @@
 const express = require("express");
 const cors = require("cors");
-
+const bodyParser = require('body-parser');
 const app = express();
-require("./app/routes/product.routes")(app);
+
+
+require("./routes/product.routes")(app);
 var corsOptions = {
     origin: "127.0.0.1"
 };
 
+
+
+
 app.use(cors(corsOptions));
 
 // parse requests of content-type - application/json
-app.use(express.json());
+// app.use(express.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.urlencoded({ extended: true }));
 
 
 // simple route
