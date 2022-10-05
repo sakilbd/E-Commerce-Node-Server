@@ -1,9 +1,11 @@
 const model = require("../../models");
 const Products = model.products;
 const Op = model.Sequelize.Op;
+const multer = require("multer");
 
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
+    // res(req.file.path);
     // Validate request
     if (!req.body.title) {
         res.status(400).send({
