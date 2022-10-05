@@ -23,7 +23,7 @@ app.use(cors(corsOptions));
 
 // simple route
 app.get("/", (req, res) => {
-    res.json({ message: "Welcome e-commerec application." });
+    res.json({ message: "Hurrah !!!!!!!!!! Have fun!!" });
 });
 
 // set port, listen for requests
