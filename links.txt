@@ -4,4 +4,9 @@ https://www.bezkoder.com/node-js-express-sequelize-mysql/
 
 
 //mysql authentication 
-https://www.tutsmake.com/node-js-express-mysql-user-authentication-rest-api-example/
+https://www.tutsmake.com/node-js-xpress-mysql-user-authentication-rest-api-example/
+
+
+
+//might be working for image upload 
+https://morioh.com/p/d997bed23cfb
