@@ -23,7 +23,7 @@ app.use(cors(corsOptions));
 
 // simple route
 app.get("/", (req, res) => {
-    res.json({ message: "Hurrah !!!!!!!!!! Have fun!!" });
+    res.json({ message: "Dev Merge Test Working!!!!!!!" });
 });
 
 // set port, listen for requests
