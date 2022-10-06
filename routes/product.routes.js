@@ -2,37 +2,48 @@ module.exports = (app) => {
     const products = require("../app/controllers/product.controller.js");
     var router = require("express").Router();
     var bodyParser = require("body-parser");
-    var multer = require("multer"); //used for form-data 
-    //used for form-data
-    const upload = multer()
+    var multer = require("multer"); //used for multipart form-data 
+    var path = require('path');
 
-    // var storage = multer.diskStorage({
-    //     destination: function(req, file, cb) {
-    //         cb(null, './uploads')
-    //     },
-    //     filename: function(req, file, cb) {
-    //         cb(null, file.originalname)
-    //     }
-    // })
-    // var upload = multer({ storage: storage })
+    var storage = multer.diskStorage({
+        destination: function(req, file, cb) {
+            cb(null, './uploads')
+        },
+        filename: function(req, file, cb) {
+            const name = file.originalname.split('.')[0];
+            // const extension = MIME_TYPES[file.mimetype];
+            cb(null, name + Date.now() + '.' + path.extname(file.originalname));
+        }
+    })
+    var upload = multer({ storage: storage })
 
-
+    // const upload = multer({
+    //         limits: {
+    //             fileSize: 1000000
+    //         },
+    //         fileFilter(req, file, cb) {
+    //             if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
+    //                 return cb(new Error("please upload a valid image file"))
+    //             }
+    //             cb(undefined, true)
+    //         }
+    //     })
     // Create a new Tutorial
-    router.post("/create", products.create);
+    router.post("/create", upload.single('image'), products.create);
 
     // Retrieve all Tutorials
     router.get("/get-all", products.findAll);
 
 
-    router.post('/upload', upload.single('image'), function(req, res, next) {
-        // req.file is the `profile-file` file
-        // req.body will hold the text fields, if there were any
-        // console.log(JSON.stringify(req.file))
-        // var response = '<a href="/">Home</a><br>'
-        // response += "Files uploaded successfully.<br>"
-        // response += `<img src="${req.file.path}" /><br>`
-        res.send(req.file)
-    })
+    // router.post('/upload', upload.single('image'), function(req, res, next) {
+    //     // req.file is the `profile-file` file
+    //     // req.body will hold the text fields, if there were any
+    //     // console.log(JSON.stringify(req.file))
+    //     // var response = '<a href="/">Home</a><br>'
+    //     // response += "Files uploaded successfully.<br>"
+    //     // response += `<img src="${req.file.path}" /><br>`
+    //     res.send(req.file)
+    // })
 
 
     // // Retrieve all published Tutorials

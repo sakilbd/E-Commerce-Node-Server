@@ -3,8 +3,13 @@ https://sequelize.org/docs/v6/other-topics/migrations/
 https://www.bezkoder.com/node-js-express-sequelize-mysql/
 
 
+image upload 
+https://www.bezkoder.com/node-js-upload-image-mysql/
+
 //mysql authentication 
 https://www.tutsmake.com/node-js-xpress-mysql-user-authentication-rest-api-example/
+
+
 
 
 

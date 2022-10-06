@@ -5,7 +5,7 @@ const multer = require("multer");
 
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
-    // res(req.file.path);
+    res.send(req.file);
     // Validate request
     if (!req.body.title) {
         res.status(400).send({
