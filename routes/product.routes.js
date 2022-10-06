@@ -3,13 +3,37 @@ module.exports = (app) => {
     var router = require("express").Router();
     var bodyParser = require("body-parser");
     var multer = require("multer"); //used for form-data 
-    var upload = multer(); //used for form-data
+    //used for form-data
+    const upload = multer()
+
+    // var storage = multer.diskStorage({
+    //     destination: function(req, file, cb) {
+    //         cb(null, './uploads')
+    //     },
+    //     filename: function(req, file, cb) {
+    //         cb(null, file.originalname)
+    //     }
+    // })
+    // var upload = multer({ storage: storage })
+
 
     // Create a new Tutorial
     router.post("/create", products.create);
 
     // Retrieve all Tutorials
     router.get("/get-all", products.findAll);
+
+
+    router.post('/upload', upload.single('image'), function(req, res, next) {
+        // req.file is the `profile-file` file
+        // req.body will hold the text fields, if there were any
+        // console.log(JSON.stringify(req.file))
+        // var response = '<a href="/">Home</a><br>'
+        // response += "Files uploaded successfully.<br>"
+        // response += `<img src="${req.file.path}" /><br>`
+        res.send(req.file)
+    })
+
 
     // // Retrieve all published Tutorials
     // router.get("/published", tutorials.findAllPublished);
@@ -26,8 +50,9 @@ module.exports = (app) => {
     // // Delete all Tutorials
     // router.delete("/", tutorials.deleteAll);
 
+    // app.use(express.static(__dirname + '/public'));
+    // app.use('/uploads', express.static('uploads'));
 
-    app.use(upload.array()); //used for form-data
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded());
     app.use(bodyParser.urlencoded({ extended: true }));
