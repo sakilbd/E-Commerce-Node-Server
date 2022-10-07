@@ -2,10 +2,13 @@ const model = require("../../models");
 const Products = model.products;
 const Op = model.Sequelize.Op;
 const multer = require("multer");
+const fs = require("fs");
+require('dotenv').config();
+const apiResponser = require('../helpers/api.responser')
 
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
-    res.send(req.file);
+    // res.send(req.file);
     // Validate request
     if (!req.body.title) {
         res.status(400).send({
@@ -17,7 +20,7 @@ exports.create = (req, res) => {
     const product = {
         catagory_id: req.body.catagory_id,
         title: req.body.title,
-        image: req.body.image,
+        image: req.file.filename,
         price: req.body.price,
         quantity: req.body.quantity,
         unit_amount: req.body.unit_amount,
@@ -28,7 +31,7 @@ exports.create = (req, res) => {
     // Save Tutorial in the database
     Products.create(product)
         .then((data) => {
-            res.send(data);
+            res.send(apiResponser.sucessResponse(200, 'Product Added Successfully', data));
         })
         .catch((err) => {
             res.status(500).send({
@@ -41,6 +44,9 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
     Products.findAll()
         .then(data => {
+            data.forEach(item => {
+                item.image = process.env.APP_URL + "/public/uploads/" + item.image;
+            })
             res.send(data);
         })
         .catch(err => {

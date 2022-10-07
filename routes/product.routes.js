@@ -6,18 +6,22 @@ module.exports = (app) => {
     var path = require('path');
     var express = require('express')
 
-    // var storage = multer.diskStorage({
-    //     destination: function(req, file, cb) {
-    //         cb(null, './public/uploads')
-    //     },
-    //     filename: function(req, file, cb) {
-    //         const name = file.originalname.split('.')[0];
-    //         // const extension = MIME_TYPES[file.mimetype];
-    //         cb(null, name + Date.now() + '.' + path.extname(file.originalname));
-    //     }
-    // })
-    // var upload = multer({ storage: storage })
-    var upload = multer()
+
+    //image upload middleWare 
+    var storage = multer.diskStorage({
+        destination: function(req, file, cb) {
+            cb(null, './public/uploads')
+        },
+        filename: function(req, file, cb) {
+            const name = file.originalname.split('.')[0];
+            // const extension = MIME_TYPES[file.mimetype];
+            cb(null, Date.now() + '_' + name + path.extname(file.originalname));
+        }
+    })
+    var upload = multer({ storage: storage })
+
+    //image upload middleWare ends
+    // var upload = multer()
 
 
     // const upload = multer({
