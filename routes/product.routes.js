@@ -4,18 +4,21 @@ module.exports = (app) => {
     var bodyParser = require("body-parser");
     var multer = require("multer"); //used for multipart form-data 
     var path = require('path');
+    var express = require('express')
 
-    var storage = multer.diskStorage({
-        destination: function(req, file, cb) {
-            cb(null, './uploads')
-        },
-        filename: function(req, file, cb) {
-            const name = file.originalname.split('.')[0];
-            // const extension = MIME_TYPES[file.mimetype];
-            cb(null, name + Date.now() + '.' + path.extname(file.originalname));
-        }
-    })
-    var upload = multer({ storage: storage })
+    // var storage = multer.diskStorage({
+    //     destination: function(req, file, cb) {
+    //         cb(null, './public/uploads')
+    //     },
+    //     filename: function(req, file, cb) {
+    //         const name = file.originalname.split('.')[0];
+    //         // const extension = MIME_TYPES[file.mimetype];
+    //         cb(null, name + Date.now() + '.' + path.extname(file.originalname));
+    //     }
+    // })
+    // var upload = multer({ storage: storage })
+    var upload = multer()
+
 
     // const upload = multer({
     //         limits: {
@@ -63,6 +66,8 @@ module.exports = (app) => {
 
     // app.use(express.static(__dirname + '/public'));
     // app.use('/uploads', express.static('uploads'));
+
+
 
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded());

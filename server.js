@@ -9,10 +9,14 @@ var corsOptions = {
     origin: "127.0.0.1"
 };
 
-
-
-
 app.use(cors(corsOptions));
+
+// http://127.0.0.1:3000/public/uploads/about_me1665134062193..PNG
+app.use('/public', express.static('public'))
+app.use(express.static('public'))
+app.use(express.static('files'))
+    // used to access everthing publicly from public folder with route "/public" as given example 
+
 
 // parse requests of content-type - application/json
 // app.use(express.json());
