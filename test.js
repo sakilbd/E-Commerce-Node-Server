@@ -13,25 +13,25 @@ puppeteer.launch().then(async() => {
 
     // Configure the navigation timeout
     await page.setDefaultNavigationTimeout(0);
-    await page.goto('https://chaldal.com/fresh-fruit');
+    await page.goto('https://chaldal.com/fresh-vegetable');
     await page.waitForSelector('body');
 
     // manipulating the page's content
     let grabPosts = await page.evaluate(() => {
 
-        let allPosts = document.body.querySelectorAll('.productPane');
+        let allPosts = document.body.querySelectorAll('.product');
 
         //storing the post items in an array then selecting for retrieving content
 
         scrapeItems = [];
         allPosts.forEach(item => {
             console.log(item);
-            let postTitle = item.querySelectorAll(('.name')).forEach(item => {
-                scrapeItems.push(item.innerText);
-            });
-            // let postDescription = item.querySelector('.name');
+            // let postTitle = item.querySelectorAll(('.name')).forEach(item => {
+            //     scrapeItems.push(item.innerText);
+            // });
+            let postDescription = item.querySelector('.name');
+            scrapeItems.push(postDescription.innerText);
 
-            // scrapeItems.push({
             //     postTitle: postTitle ? postTitle.innerText : null,
             //     postDescription: postDescription ? postDescription.innerText : null,
             // });
