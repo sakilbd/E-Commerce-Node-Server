@@ -4,18 +4,19 @@ const cheerio = require("cheerio");
 
 const getPostTitles = async() => {
     try {
-        const { data } = await axios.get("https://chaldal.com/fresh-fruit");
+        const { data } = await axios.get("https://chaldal.com/fresh-vegetable");
         const $ = cheerio.load(data);
 
         const postTitles = [];
         // return "shauwa"
         // return $('div > p.web-header-address > span.web-header-address-title').text();
-        $("div.imageWrapper  ").each((_idx, el) => {
+        $("div.imageWrapper").each((_idx, el) => {
             // console.log(el)
             // const postTitle = $(el).text();
             // const image = $(el).attr().src;
             const postTitle = $(el).find(".name").text();
-            const image = $(el).find(".imageWrapperWrapper > img").attr().src;
+            // const image = $(el).find(".imageWrapperWrapper > img").attr().src;
+            const image = "shit"
             const quantity = $(el).find(".subText").text();
             let price = "";
             $(el)
