@@ -13,6 +13,9 @@ module.exports = {
                     key: "id"
                 },
             },
+            child_catagory_id: {
+                type: Sequelize.INTEGER
+            },
             product_title: {
                 type: Sequelize.STRING
             },

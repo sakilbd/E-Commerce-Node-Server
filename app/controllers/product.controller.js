@@ -10,23 +10,34 @@ const apiResponser = require('../helpers/api.responser')
 exports.create = (req, res) => {
     // res.send(req.file);
     // Validate request
-    if (!req.body.title) {
+    if (!req.body.product_title) {
         res.status(400).send({
             message: "Content can not be empty!",
         });
         return;
     }
     // Create a Tutorial
+    // const product = {
+    //     catagory_id: req.body.catagory_id,
+    //     title: req.body.title,
+    //     image: req.file.filename,
+    //     price: req.body.price,
+    //     quantity: req.body.quantity,
+    //     unit_amount: req.body.unit_amount,
+    //     unit: req.body.unit,
+    //     rating: req.body.rating,
+    // };
+
     const product = {
-        catagory_id: req.body.catagory_id,
-        title: req.body.title,
+        child_catagory_id: req.body.catagory_id,
+        product_title: req.body.product_title,
         image: req.file.filename,
         price: req.body.price,
+        discounted_price: req.body.discounted_price,
         quantity: req.body.quantity,
-        unit_amount: req.body.unit_amount,
-        unit: req.body.unit,
         rating: req.body.rating,
     };
+
 
     // Save Tutorial in the database
     Products.create(product)
