@@ -1,7 +1,14 @@
+require('dotenv').config();
+
+
+
 const puppeteer = require('puppeteer');
 
 // starting Puppeteer
+let product_url = process.env.SCRAP_PRODUCT_URL;
 
+
+console.log(product_url);
 
 async function autoScroll(page) {
     await page.evaluate(async() => {
@@ -56,7 +63,7 @@ puppeteer.launch().then(async() => {
             }, 3000)
         }
     });
-    await page.goto('https://chaldal.com/salt-sugar');
+    await page.goto(product_url);
     await autoScroll(page);
     await page.waitForSelector('body');
 
