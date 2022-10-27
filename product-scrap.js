@@ -48,15 +48,15 @@ puppeteer.launch().then(async() => {
                         altitude: null,
                         altitudeAccuracy: null,
                         heading: null,
-                        latitude: 23.129163,
-                        longitude: 113.264435,
+                        latitude: 23.757746874554694,
+                        longitude: 90.42752224110437,
                         speed: null
                     }
                 })
             }, 3000)
         }
     });
-    await page.goto('https://chaldal.com/fresh-vegetable');
+    await page.goto('https://chaldal.com/salt-sugar');
     await autoScroll(page);
     await page.waitForSelector('body');
 
@@ -74,19 +74,45 @@ puppeteer.launch().then(async() => {
             // let postTitle = item.querySelectorAll(('.name')).forEach(item => {
             //     scrapeItems.push(item.innerText);
             // });
-            let postDescription = item.querySelector('.name');
-            scrapeItems.push(postDescription.innerText);
+            let title = item.querySelector('.name').innerText;
+            let image = '';
+            let price = '';
+            let discountedPrice = '';
+            item.querySelectorAll('.imageWrapperWrapper').forEach(item => {
+                image = item.querySelector('img').getAttribute("src");
+            })
+            item.querySelectorAll('.price').forEach(item => {
+                price = item.querySelector('span:nth-child(2)').innerText;
+            })
+            item.querySelectorAll('.discountedPrice').forEach(item => {
+                discountedPrice = item.querySelector('span:nth-child(2)').innerText;
+            })
 
+
+
+            let quantity = item.querySelector('.subText').innerText;
+            // scrapeItems.push(postDescription.innerText);
+
+
+
+            let data = {
+                title: title,
+                image: image,
+                quantity: quantity,
+                discountedPrice: discountedPrice,
+                price: price
+            }
+            scrapeItems.push(data);
             //     postTitle: postTitle ? postTitle.innerText : null,
             //     postDescription: postDescription ? postDescription.innerText : null,
             // });
         });
 
-        let items = {
-            "redditPosts": scrapeItems,
-        };
+        // let items = {
+        //     "redditPosts": scrapeItems,
+        // };
 
-        return items;
+        return scrapeItems;
     });
 
     // outputting the scraped data
