@@ -14,7 +14,9 @@ puppeteer.launch().then(async() => {
     // Configure the navigation timeout
     await page.setDefaultNavigationTimeout(0);
     await page.goto('https://chaldal.com/fresh-vegetable');
+    await autoScroll(page);
     await page.waitForSelector('body');
+
 
     // manipulating the page's content
     let grabPosts = await page.evaluate(() => {

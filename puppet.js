@@ -37,7 +37,7 @@ async function scrapeItems(
     page,
     extractItems,
     itemCount,
-    scrollDelay = 4000,
+    scrollDelay = 1000,
 ) {
     let items = [];
     try {
@@ -52,7 +52,24 @@ async function scrapeItems(
     } catch (e) {}
     return items;
 }
+async function autoScroll(page) {
+    await page.evaluate(async() => {
+        await new Promise((resolve) => {
+            var totalHeight = 0;
+            var distance = 100;
+            var timer = setInterval(() => {
+                var scrollHeight = document.body.scrollHeight;
+                window.scrollBy(0, distance);
+                totalHeight += distance;
 
+                if (totalHeight >= scrollHeight - window.innerHeight) {
+                    clearInterval(timer);
+                    resolve();
+                }
+            }, 100);
+        });
+    });
+}
 (async() => {
     // Set up Chromium browser and page.
 
@@ -93,6 +110,7 @@ async function scrapeItems(
     });
     // Navigate to the example page.
     await page.goto('https://chaldal.com/fresh-vegetable');
+    await autoScroll(page);
 
     // Auto-scroll and extract desired items from the page. Currently set to extract ten items.
     const items = await scrapeItems(page, extractItems, 10);
