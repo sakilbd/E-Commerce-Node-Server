@@ -15,4 +15,14 @@ model migration create ..
 
 8.form data insert (need to have body-parser package installed and included in routes file to read form data )
 
+seed commands 
+9. npx sequelize-cli seed:generate --name demo-user //create seen folder and create a seed fiel named demo-use
+10. npx sequelize-cli db:seed:all
+11. npx sequelize-cli db:seed:undo
+12. npx sequelize-cli db:seed:undo:all
+
+
+
+
+
 

@@ -8,6 +8,10 @@ module.exports = {
                 autoIncrement: true,
                 primaryKey: true,
                 type: Sequelize.INTEGER,
+
+            },
+            root_catagory_id: {
+                type: Sequelize.INTEGER,
                 references: {
                     model: "root_catagories",
                     key: "id"

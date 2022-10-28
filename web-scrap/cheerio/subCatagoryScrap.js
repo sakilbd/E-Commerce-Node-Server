@@ -5,7 +5,7 @@ const fs = require("fs");
 var jsonFileName;
 const getPostTitles = async() => {
     try {
-        let url = "https://chaldal.com/cleaning"
+        let url = "https://chaldal.com/food"
         let urlSplit = url.split('/');
         jsonFileName = urlSplit[urlSplit.length - 1];
         const { data } = await axios.get(url);
@@ -34,7 +34,7 @@ const getPostTitles = async() => {
 };
 
 getPostTitles().then((postTitles) => {
-    fs.writeFile(`./web-scrap/cheerio/sub-catagory/${jsonFileName}.json`, JSON.stringify(postTitles), (err) => {
+    fs.writeFile(`./web-scrap/scraped-data/sub-catagory/${jsonFileName}.json`, JSON.stringify(postTitles), (err) => {
         if (err) throw err;
         console.log('Data written to file');
     });

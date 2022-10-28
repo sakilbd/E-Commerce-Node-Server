@@ -13,6 +13,13 @@ module.exports = {
                     key: "id"
                 },
             },
+            sub_catagory_id: {
+                type: Sequelize.INTEGER,
+                references: {
+                    model: "sub_catagories",
+                    key: "id"
+                },
+            },
             child_catagory_title: {
                 type: Sequelize.STRING
             },

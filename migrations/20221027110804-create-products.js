@@ -8,13 +8,14 @@ module.exports = {
                 autoIncrement: true,
                 primaryKey: true,
                 type: Sequelize.INTEGER,
+
+            },
+            child_catagory_id: {
+                type: Sequelize.INTEGER,
                 references: {
                     model: "child_catagories",
                     key: "id"
                 },
-            },
-            child_catagory_id: {
-                type: Sequelize.INTEGER
             },
             product_title: {
                 type: Sequelize.STRING
