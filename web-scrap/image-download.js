@@ -1,5 +1,7 @@
 const request = require("request");
 const fs = require("fs");
+let data = require("./scraped-data/sub-catagory/food.json");
+
 
 async function download(url, dest) {
     /* Create an empty file where we can save data */
@@ -34,13 +36,18 @@ async function download(url, dest) {
     if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir);
     }
-    const url = "https://chaldn.com/_mpimage/sis-white-sugar-2-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D48010&q=low&v=1&m=400&webp=1"
-    const imageUrlSplit = url.split('?')[0];
-    const secondSplit = imageUrlSplit.split('/');
-    const imageName = secondSplit[secondSplit.length - 1]
-    const data = await download(
-        url,
-        `${dir}/${imageName}` + ".png"
-    );
-    console.log(data); // The file is finished downloading.
+    data.forEach(async ul => {
+            const url = ul.image
+            const imageUrlSplit = url.split('?')[0];
+            const secondSplit = imageUrlSplit.split('/');
+            const imageName = secondSplit[secondSplit.length - 1]
+            const data = await download(
+                url,
+                `${dir}/${imageName}` + ".png"
+            );
+            console.log(data);
+
+
+        })
+        // The file is finished downloading.
 })();
