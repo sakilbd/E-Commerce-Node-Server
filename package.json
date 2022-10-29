@@ -5,8 +5,10 @@
 
     "scripts": {
         "start": "node ./bin/www",
-        "scrap": "node ./web-scrap/cheerio/subCatagoryScrap.js",
-        "download": "node ./web-scrap/image-download-catagory.js",
+        "scrap-catagory": "node ./web-scrap/cheerio/subCatagoryScrap.js",
+        "scrap-products": "node ./web-scrap/puppeteer/product-scrap.js",
+        "download-catagory": "node ./web-scrap/image-download-catagory.js",
+        "download-products": "node ./web-scrap/image-download-products.js",
         "seed-sub-cat": "npx sequelize-cli db:seed --seed ./seeders/20221028152000-sub-catagory.js",
         "seed-child-cat": "npx sequelize-cli db:seed --seed ./seeders/20221028152019-child-catagory"
 

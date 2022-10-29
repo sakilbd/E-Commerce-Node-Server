@@ -1,7 +1,7 @@
 const request = require("request");
 
 const fs = require("fs");
-let data = require("./scraped-data/sub_catagory.json");
+let data = require("./scraped-data/products.json");
 
 
 async function download(url, dest) {
@@ -54,7 +54,7 @@ async function download(url, dest) {
 
     const tempSeedDirectory = "./web-scrap/data-to-seed"
 
-    fs.writeFile(`${tempSeedDirectory}/sub-catagory-to-seed.json`, JSON.stringify(sub_catagory_to_db_insert), (err) => {
+    fs.writeFile(`${tempSeedDirectory}/products-to-seed.json`, JSON.stringify(sub_catagory_to_db_insert), (err) => {
         if (err) throw err;
         console.log(`Data written to file to ${tempSeedDirectory}/sub-catagory-to-seed.json`);
     });
