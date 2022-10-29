@@ -1,4 +1,5 @@
 "use strict";
+require('dotenv').config();
 
 let data = require("../web-scrap/data-to-seed/sub-catagory-to-seed.json");
 

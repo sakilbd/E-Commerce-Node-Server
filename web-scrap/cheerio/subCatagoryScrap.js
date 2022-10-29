@@ -1,11 +1,15 @@
 const axios = require("axios");
-
 const cheerio = require("cheerio");
 const fs = require("fs");
+require('dotenv').config();
+const catagory_url = process.env.SCRAP_CATAGORY_URL;
+
+
 var jsonFileName;
+
 const getPostTitles = async() => {
     try {
-        let url = "https://chaldal.com/fruits-vegetables"
+        let url = catagory_url;
         let urlSplit = url.split('/');
         jsonFileName = urlSplit[urlSplit.length - 1];
         const { data } = await axios.get(url);

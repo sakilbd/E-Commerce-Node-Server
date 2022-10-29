@@ -1,4 +1,6 @@
 "use strict";
+require('dotenv').config();
+
 
 let data = require("../web-scrap/data-to-seed/sub-catagory-to-seed.json");
 
@@ -10,7 +12,7 @@ const item = [
 
 data.forEach(data => {
     item.push({
-        root_catagory_id: 1,
+        root_catagory_id: process.env.ROOT_CATAGORY_ID,
         sub_catagory_title: data.title,
         image: data.image,
         createdAt: new Date(),

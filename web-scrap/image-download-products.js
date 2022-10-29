@@ -1,6 +1,8 @@
 const request = require("request");
+
 const fs = require("fs");
 let data = require("./scraped-data/sub_catagory.json");
+
 
 async function download(url, dest) {
     /* Create an empty file where we can save data */
