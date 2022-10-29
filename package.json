@@ -6,7 +6,7 @@
     "scripts": {
         "start": "node ./bin/www",
         "scrap": "node ./web-scrap/cheerio/subCatagoryScrap.js",
-        "download": "node ./web-scrap/image-download.js",
+        "download": "node ./web-scrap/image-download-catagory.js",
         "seed-sub-cat": "npx sequelize-cli db:seed --seed ./seeders/20221028152000-sub-catagory.js",
         "seed-child-cat": "npx sequelize-cli db:seed --seed ./seeders/20221028152019-child-catagory"
 
