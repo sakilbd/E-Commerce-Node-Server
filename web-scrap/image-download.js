@@ -2,7 +2,6 @@ const request = require("request");
 const fs = require("fs");
 let data = require("./scraped-data/sub-catagory/food.json");
 
-
 async function download(url, dest) {
     /* Create an empty file where we can save data */
     const file = fs.createWriteStream(dest);
@@ -31,23 +30,31 @@ async function download(url, dest) {
 
 (async() => {
     var fs = require("fs");
-    var dir = "./web-scrap/sakil";
+    var dir = "./public/uploads";
 
     if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir);
     }
-    data.forEach(async ul => {
-            const url = ul.image
-            const imageUrlSplit = url.split('?')[0];
-            const secondSplit = imageUrlSplit.split('/');
-            const imageName = secondSplit[secondSplit.length - 1]
-            const data = await download(
-                url,
-                `${dir}/${imageName}` + ".png"
-            );
-            console.log(data);
+    let sub_catagory_to_db_insert = [];
 
+    data.forEach((ul) => {
+        const url = ul.image;
+        const imageUrlSplit = url.split("?")[0];
+        const secondSplit = imageUrlSplit.split("/");
+        const imageName = secondSplit[secondSplit.length - 1];
+        const data = download(url, `${dir}/${imageName}` + ".png");
 
-        })
-        // The file is finished downloading.
+        const obj = { title: ul.title, image: imageName + '.png' };
+        sub_catagory_to_db_insert.push(obj);
+    });
+
+    //to save updated json with downloaded image link 
+
+    const tempSeedDirectory = "./web-scrap/data-to-seed"
+
+    fs.writeFile(`${tempSeedDirectory}/sub-catagory-to-seed.json`, JSON.stringify(sub_catagory_to_db_insert), (err) => {
+        if (err) throw err;
+        console.log(`Data written to file to ${tempSeedDirectory}/sub-catagory-to-seed.json`);
+    });
+    // The file is finished downloading.
 })();

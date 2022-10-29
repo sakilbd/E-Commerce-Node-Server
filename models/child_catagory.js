@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     }
     Child_Catagory.init({
         sub_catagory_id: {
-            type: Sequelize.INTEGER,
+            type: DataTypes.INTEGER,
 
         },
         child_catagory_title: DataTypes.STRING,

@@ -20,6 +20,8 @@ seed commands
 10. npx sequelize-cli db:seed:all
 11. npx sequelize-cli db:seed:undo
 12. npx sequelize-cli db:seed:undo:all
+13. npx sequelize-cli db:seed --seed .\seeders\20221028152000-sub-catagory.js // to seed specific file 
+
 
 
 

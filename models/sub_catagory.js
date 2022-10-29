@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     }
     Sub_Catagory.init({
         root_catagory_id: {
-            type: Sequelize.INTEGER,
+            type: DataTypes.INTEGER,
 
         },
         sub_catagory_title: DataTypes.STRING,
