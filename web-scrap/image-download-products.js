@@ -46,7 +46,14 @@ async function download(url, dest) {
         const imageName = secondSplit[secondSplit.length - 1];
         const data = download(url, `${dir}/${imageName}` + ".png");
 
-        const obj = { title: ul.title, image: imageName + '.png' };
+        const obj = {
+            title: ul.title,
+            image: imageName + '.png',
+            quantity: ul.quantity,
+            discounted_price: ul.discountedPrice,
+            price: ul.price
+
+        };
         sub_catagory_to_db_insert.push(obj);
     });
 

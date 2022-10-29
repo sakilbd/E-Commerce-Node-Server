@@ -10,7 +10,13 @@
         "download-catagory": "node ./web-scrap/image-download-catagory.js",
         "download-products": "node ./web-scrap/image-download-products.js",
         "seed-sub-cat": "npx sequelize-cli db:seed --seed ./seeders/20221028152000-sub-catagory.js",
-        "seed-child-cat": "npx sequelize-cli db:seed --seed ./seeders/20221028152019-child-catagory"
+        "seed-child-cat": "npx sequelize-cli db:seed --seed ./seeders/20221028152019-child-catagory",
+        "seed-products": "npx sequelize-cli db:seed --seed ./seeders/20221029152651-bulk-product-add",
+        "sub": "npm run scrap-catagory & npm run download-catagory & npm run seed-sub-cat",
+        "child": "npm run scrap-catagory & npm run download-catagory & npm run seed-child-cat",
+        "products": "npm run scrap-products & npm run download-products & npm run seed-products"
+
+
 
     },
     "dependencies": {

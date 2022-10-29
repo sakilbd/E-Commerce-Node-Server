@@ -11,7 +11,7 @@ const item = [
 
 data.forEach(data => {
     item.push({
-        sub_catagory_id: 1,
+        sub_catagory_id: process.env.SUB_CATAGORY_ID,
         child_catagory_title: data.title,
         image: data.image,
         createdAt: new Date(),
