@@ -5,7 +5,7 @@ const fs = require("fs");
 var jsonFileName;
 const getPostTitles = async() => {
     try {
-        let url = "https://chaldal.com/food"
+        let url = "https://chaldal.com/fruits-vegetables"
         let urlSplit = url.split('/');
         jsonFileName = urlSplit[urlSplit.length - 1];
         const { data } = await axios.get(url);
