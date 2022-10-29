@@ -2,7 +2,6 @@
     "name": "node",
     "version": "0.0.0",
     "private": true,
-
     "scripts": {
         "start": "node ./bin/www",
         "scrap-catagory": "node ./web-scrap/cheerio/subCatagoryScrap.js",
@@ -15,9 +14,6 @@
         "sub": "npm run scrap-catagory & npm run download-catagory & npm run seed-sub-cat",
         "child": "npm run scrap-catagory & npm run download-catagory & npm run seed-child-cat",
         "products": "npm run scrap-products & npm run download-products & npm run seed-products"
-
-
-
     },
     "dependencies": {
         "axios": "^1.1.3",
@@ -37,7 +33,8 @@
         "nodemon": "^2.0.20",
         "puppeteer": "^19.2.0",
         "request": "^2.88.2",
-        "sequelize": "^6.23.2"
+        "sequelize": "^6.23.2",
+        "shelljs": "^0.8.5"
     },
     "devDependencies": {
         "sequelize-cli": "^6.5.1"

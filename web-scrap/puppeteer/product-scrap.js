@@ -1,5 +1,7 @@
 require("dotenv").config();
 var fs = require("fs");
+const { exit } = require("process");
+
 
 const puppeteer = require("puppeteer");
 
@@ -28,6 +30,7 @@ async function autoScroll(page) {
         });
     });
 }
+
 puppeteer
     .launch()
     .then(async() => {
@@ -40,7 +43,7 @@ puppeteer
                 "--no-sandbox",
                 "--disable-setuid-sandbox",
                 "--disable-notifications",
-                "--incognito",
+
             ], // these are used to disable notification
         });
 
@@ -120,11 +123,16 @@ puppeteer
 
             return scrapeItems;
         });
+
+        // outputting the scraped data
+
+        const data = grabPosts;
+
         const directoryToKeePAllScraps = "./web-scrap/scraped-data/products";
         const tempDirectory = "./web-scrap/scraped-data";
         fs.writeFile(
             `${directoryToKeePAllScraps}/${jsonFileName}.json`,
-            JSON.stringify(grabPosts),
+            JSON.stringify(data),
             (err) => {
                 if (err) throw err;
                 console.log(
@@ -134,19 +142,22 @@ puppeteer
         );
         fs.writeFile(
             `${tempDirectory}/products.json`,
-            JSON.stringify(grabPosts),
+            JSON.stringify(data),
             (err) => {
                 if (err) throw err;
                 console.log(
                     `Data written to file to ${tempDirectory}/products.json`
                 );
             }
+
         );
-        // outputting the scraped data
         console.log(grabPosts);
         // closing the browser
         await browser.close();
+        // exit();
+        process.exit();
     })
     .catch(function(err) {
-        console.error(err);
+
+
     });
