@@ -66,6 +66,26 @@ exports.findAll = (req, res) => {
             });
         });
 };
+exports.findByCatagory = (req, res) => {
+    const childCatagoryId = req.params.childCatagoryId;
+    Products.findAll({
+            where: {
+                child_catagory_id: childCatagoryId
+            }
+        })
+        .then(data => {
+            data.forEach(item => {
+                item.image = process.env.APP_URL + "/public/uploads/" + item.image;
+            })
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while retrieving tutorials."
+            });
+        });
+    // res.send(childCatagoryId);
+};
 
 // Find a single Tutorial with an id
 exports.findOne = (req, res) => {};
