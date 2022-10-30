@@ -59,7 +59,7 @@ exports.findAll = (req, res) => {
     Products.findAll()
         .then(data => {
             data.forEach(item => {
-                item.image = process.env.APP_URL + "/public/uploads/" + item.image;
+                item.image = "http://" + process.env.APP_URL + "/public/uploads/" + item.image;
             })
             res.send(data);
         })
@@ -78,7 +78,7 @@ exports.findByCatagory = (req, res) => {
         })
         .then(data => {
             data.forEach(item => {
-                item.image = process.env.APP_URL + "/public/uploads/" + item.image;
+                item.image = "http://" + process.env.APP_URL + "/public/uploads/" + item.image;
             })
             res.send(data);
         })
@@ -95,7 +95,7 @@ exports.getChildCatagory = (req, res) => {
     ChildCatagory.findAll()
         .then(data => {
             data.forEach(item => {
-                item.image = process.env.APP_URL + "/public/uploads/" + item.image;
+                item.image = "http://" + process.env.APP_URL + "/public/uploads/" + item.image;
             })
             res.send(data);
         })
