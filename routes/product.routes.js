@@ -41,6 +41,7 @@ module.exports = (app) => {
     // Retrieve all Tutorials
     router.get("/get-all", products.findAll);
     router.get("/get-by-catagory/:childCatagoryId", products.findByCatagory);
+    router.get("/get-child-catagory", products.getChildCatagory);
 
 
     // router.post('/upload', upload.single('image'), function(req, res, next) {

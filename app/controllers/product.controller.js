@@ -1,10 +1,13 @@
 const model = require("../../models");
-const Products = model.products;
+
 const Op = model.Sequelize.Op;
 const multer = require("multer");
 const fs = require("fs");
 require('dotenv').config();
-const apiResponser = require('../helpers/api.responser')
+const apiResponser = require('../helpers/api.responser');
+
+const Products = model.products;
+const ChildCatagory = model.Child_Catagory; // this should be the model name inside model file 
 
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
@@ -73,6 +76,23 @@ exports.findByCatagory = (req, res) => {
                 child_catagory_id: childCatagoryId
             }
         })
+        .then(data => {
+            data.forEach(item => {
+                item.image = process.env.APP_URL + "/public/uploads/" + item.image;
+            })
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while retrieving tutorials."
+            });
+        });
+    // res.send(childCatagoryId);
+};
+
+exports.getChildCatagory = (req, res) => {
+
+    ChildCatagory.findAll()
         .then(data => {
             data.forEach(item => {
                 item.image = process.env.APP_URL + "/public/uploads/" + item.image;
